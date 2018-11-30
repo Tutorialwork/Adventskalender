@@ -1,0 +1,9 @@
+name: Adventskalender
+author: Tutorialwork
+version: 1.0
+main: de.tutorialwork.main.main
+
+commands:
+  adventskalender:
+    aliases:
+      - advent
