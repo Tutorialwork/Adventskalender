@@ -23,7 +23,7 @@ public class adventskalender implements CommandExecutor, Listener {
         DateTimeFormatter monat = DateTimeFormatter.ofPattern("MM");
         DateTimeFormatter tag = DateTimeFormatter.ofPattern("dd");
         LocalDateTime now = LocalDateTime.now();
-        if(!monat.format(now).equals("12")){
+        if(monat.format(now).equals("12")){
             //Ist Dezember
             Inventory inv = Bukkit.createInventory(p, 27, "§aAdventskalender");
             String debug = "01"; //Debugstring
