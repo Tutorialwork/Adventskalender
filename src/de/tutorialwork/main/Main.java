@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 public class Main extends JavaPlugin {
 
@@ -47,18 +48,30 @@ public class Main extends JavaPlugin {
             dataFile.createNewFile();
     }
 
-    public static ItemStack createItem(Material material, int anzahl, int subid, String displayname) {
-        short neuesubid = (short) subid;
-        ItemStack i = new ItemStack(material, anzahl, neuesubid);
+    /**
+     * Builds an item by the material, amount
+     * @param material The material of the item
+     * @param amount The item amount
+     * @param displayName The name of the item
+     * @return The built item
+     */
+    public static ItemStack createItem(Material material, int amount, String displayName) {
+        ItemStack i = new ItemStack(material, amount);
         ItemMeta m = i.getItemMeta();
-        m.setDisplayName(displayname);
+        m.setDisplayName(displayName);
         i.setItemMeta(m);
 
         return i;
     }
 
-    public static void setUsed(String UUID, int Day) {
-        dataConfig.set(UUID + ".day" + Day, true);
+
+    /**
+     * Sets the provided day used for a user
+     * @param uuid The uuid of the player whose day should be used
+     * @param day The day which the user clicked
+     */
+    public static void setUsed(UUID uuid, int day) {
+        dataConfig.set(uuid + ".day" + day, true);
         try {
             dataConfig.save(dataFile);
         } catch (IOException e) {
@@ -66,9 +79,15 @@ public class Main extends JavaPlugin {
         }
     }
 
-    public static boolean hasUsed(String UUID, int Day) {
-        if (dataConfig.getString(UUID + ".day" + Day) != null) {
-            if (dataConfig.getBoolean(UUID + ".day" + Day) == true) {
+    /**
+     * Checks if the user has already used the day
+     * @param uuid The uuid of the player to check
+     * @param day The day to be checked
+     * @return <b>true</b> if the day has been used, <b>false</b> otherwise
+     */
+    public static boolean hasUsed(UUID uuid, int day) {
+        if (dataConfig.getString(uuid + ".day" + day) != null) {
+            if (dataConfig.getBoolean(uuid + ".day" + day) == true) {
                 return true;
             } else {
                 return false;
