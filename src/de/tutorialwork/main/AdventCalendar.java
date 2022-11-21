@@ -57,12 +57,13 @@ public class AdventCalendar implements CommandExecutor, Listener {
         event.setCancelled(true);
         player.closeInventory();
 
-        if (event.getCurrentItem().getType() == Material.IRON_DOOR) {
-            int day = event.getSlot() + 1;
-            if (day > 24) return;
+        int day = event.getSlot() + 1;
+        if (day > 24) return;
 
+        if (event.getCurrentItem().getType() == Material.IRON_DOOR) {
             if (Main.hasUsed(player.getUniqueId(), day)) {
-                player.sendMessage(Main.getPrefix() + replaceColorCodes(Main.getConfigString("AlreadyEarned")));
+                player.sendMessage(Main.getPrefix() + replaceColorCodes(Main.getConfigString("AlreadyEarned")
+                        .replace("%day%", "" + day)));
                 return;
             }
 
@@ -75,7 +76,8 @@ public class AdventCalendar implements CommandExecutor, Listener {
             player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
             Main.setUsed(player.getUniqueId(), day);
         } else {
-            player.sendMessage(Main.getPrefix() + replaceColorCodes(Main.getConfigString("NotCurrentDay")));
+            player.sendMessage(Main.getPrefix() + replaceColorCodes(Main.getConfigString("NotCurrentDay")
+                    .replace("%day%", "" + day)));
         }
     }
 
