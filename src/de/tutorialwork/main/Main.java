@@ -1,11 +1,8 @@
 package de.tutorialwork.main;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -69,23 +66,6 @@ public class Main extends JavaPlugin {
     public static String getConfigString(String path) {
         return config.getString(path);
     }
-
-    /**
-     * Builds an item by the material, amount
-     * @param material The material of the item
-     * @param amount The item amount
-     * @param displayName The name of the item
-     * @return The built item
-     */
-    public static ItemStack createItem(Material material, int amount, String displayName) {
-        ItemStack i = new ItemStack(material, amount);
-        ItemMeta m = i.getItemMeta();
-        m.setDisplayName(displayName);
-        i.setItemMeta(m);
-
-        return i;
-    }
-
 
     /**
      * Sets the provided day used for a user
