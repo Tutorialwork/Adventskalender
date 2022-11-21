@@ -27,7 +27,7 @@ public class AdventCalendar implements CommandExecutor, Listener {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
 
-        int month = cal.get(Calendar.MONTH);
+        int month = cal.get(Calendar.MONTH) + 1;
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         Inventory inv = Bukkit.createInventory(null, 27, "§aAdventskalender");
