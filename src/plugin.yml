@@ -1,7 +1,8 @@
 name: Adventskalender
 author: Tutorialwork
-version: 1.0
-main: de.tutorialwork.main.main
+version: 1.0.1
+main: de.tutorialwork.main.Main
+api-version: 1.13
 
 commands:
   adventskalender:
