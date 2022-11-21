@@ -25,9 +25,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new AdventCalendar(), this);
 
         File folder = new File("plugins//Adventskalender");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
+        if (!folder.exists()) folder.mkdir();
 
         try {
             loadConfiguration();
@@ -52,6 +50,7 @@ public class Main extends JavaPlugin {
 
     /**
      * Gets the prefix of the plugin
+     *
      * @return The prefix of the plugin
      */
     public static String getPrefix() {
@@ -60,6 +59,7 @@ public class Main extends JavaPlugin {
 
     /**
      * Gets a string from the config
+     *
      * @param path The path of the config string to look for
      * @return The value of the config string
      */
@@ -69,6 +69,7 @@ public class Main extends JavaPlugin {
 
     /**
      * Gets the reward commands
+     *
      * @param day The day to get
      * @return All commands to run at the provided day
      */
@@ -79,8 +80,9 @@ public class Main extends JavaPlugin {
 
     /**
      * Sets the provided day used for a user
+     *
      * @param uuid The uuid of the player whose day should be used
-     * @param day The day which the user clicked
+     * @param day  The day which the user clicked
      */
     public static void setUsed(UUID uuid, int day) {
         dataConfig.set(uuid + ".day" + day, true);
@@ -93,8 +95,9 @@ public class Main extends JavaPlugin {
 
     /**
      * Checks if the user has already used the day
+     *
      * @param uuid The uuid of the player to check
-     * @param day The day to be checked
+     * @param day  The day to be checked
      * @return <b>true</b> if the day has been used, <b>false</b> otherwise
      */
     public static boolean hasUsed(UUID uuid, int day) {
