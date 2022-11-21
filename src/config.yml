@@ -25,4 +25,6 @@ Reward:
   21: "give %player% minecraft:diamond 1"
   22: "give %player% minecraft:diamond 1"
   23: "give %player% minecraft:diamond 1"
-  24: "give %player% minecraft:diamond 1"
+  24:
+    - "give %player% minecraft:diamond 1"
+    - "give %player% minecraft:emerald 1"
