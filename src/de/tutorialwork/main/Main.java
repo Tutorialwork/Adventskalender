@@ -18,7 +18,7 @@ public class Main extends JavaPlugin {
 
     private static final File configFile = new File("plugins//Adventskalender//config.yml");
 
-    public static String Prefix;
+    private static String prefix;
 
     @Override
     public void onEnable() {
@@ -32,7 +32,7 @@ public class Main extends JavaPlugin {
 
         try {
             loadConfiguration();
-            Prefix = getConfig().getString("Prefix").replace("&", "§");
+            prefix = getConfig().getString("Prefix").replace("&", "§");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,6 +46,14 @@ public class Main extends JavaPlugin {
             saveDefaultConfig();
         if (!dataFile.exists())
             dataFile.createNewFile();
+    }
+
+    /**
+     * Gets the prefix of the plugin
+     * @return The prefix of the plugin
+     */
+    public static String getPrefix() {
+        return prefix;
     }
 
     /**
