@@ -23,8 +23,9 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         getCommand("adventskalender").setExecutor(new AdventCalendar());
         Bukkit.getPluginManager().registerEvents(new AdventCalendar(), this);
+
         File folder = new File("plugins//Adventskalender");
-        if(!folder.exists()){
+        if (!folder.exists()) {
             folder.mkdir();
         }
 
@@ -46,9 +47,8 @@ public class Main extends JavaPlugin {
             dataFile.createNewFile();
     }
 
-    public static ItemStack createItem(Material material, int anzahl, int subid, String displayname)
-    {
-        short neuesubid = (short)subid;
+    public static ItemStack createItem(Material material, int anzahl, int subid, String displayname) {
+        short neuesubid = (short) subid;
         ItemStack i = new ItemStack(material, anzahl, neuesubid);
         ItemMeta m = i.getItemMeta();
         m.setDisplayName(displayname);
@@ -57,8 +57,8 @@ public class Main extends JavaPlugin {
         return i;
     }
 
-    public static void setUsed(String UUID, int Day){
-        dataConfig.set(UUID+".day"+Day, true);
+    public static void setUsed(String UUID, int Day) {
+        dataConfig.set(UUID + ".day" + Day, true);
         try {
             dataConfig.save(dataFile);
         } catch (IOException e) {
@@ -66,9 +66,9 @@ public class Main extends JavaPlugin {
         }
     }
 
-    public static boolean hasUsed(String UUID, int Day){
-        if(dataConfig.getString(UUID+".day"+Day) != null){
-            if(dataConfig.getBoolean(UUID+".day"+Day) == true){
+    public static boolean hasUsed(String UUID, int Day) {
+        if (dataConfig.getString(UUID + ".day" + Day) != null) {
+            if (dataConfig.getBoolean(UUID + ".day" + Day) == true) {
                 return true;
             } else {
                 return false;
