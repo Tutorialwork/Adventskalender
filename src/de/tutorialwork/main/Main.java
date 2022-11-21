@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 
-public class main extends JavaPlugin {
+public class Main extends JavaPlugin {
 
     static File file = new File("plugins//Adventskalender//data.yml");
     static YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
