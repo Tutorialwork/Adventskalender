@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
+import java.util.*;
 
 public class Main extends JavaPlugin {
 
@@ -65,6 +65,16 @@ public class Main extends JavaPlugin {
      */
     public static String getConfigString(String path) {
         return config.getString(path);
+    }
+
+    /**
+     * Gets the reward commands
+     * @param day The day to get
+     * @return All commands to run at the provided day
+     */
+    public static List<String> getRewardCommands(int day) {
+        return config.isString("Reward." + day) ? Collections.singletonList(config.getString("Reward." + day))
+                : config.getStringList("Reward." + day);
     }
 
     /**
