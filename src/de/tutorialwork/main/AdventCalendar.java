@@ -12,21 +12,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class AdventCalendar implements CommandExecutor, Listener {
-
-    /**
-     * Replaces the color codes in a message
-     *
-     * @param message The message to replace the color codes in
-     * @return The new message
-     */
-    public String replaceColorCodes(String message) {
-        return ChatColor.translateAlternateColorCodes('&', message);
-    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -46,7 +38,7 @@ public class AdventCalendar implements CommandExecutor, Listener {
         }
 
         for (int i = 0; i < 24; i++) {
-            inv.setItem(i, Main.createItem(day == i + 1 ? Material.IRON_DOOR : Material.OAK_DOOR, 1,
+            inv.setItem(i, createItem(day == i + 1 ? Material.IRON_DOOR : Material.OAK_DOOR,
                     (day == i + 1 ? "§a§l" : "§c") + "Tag " + (i + 1)));
         }
 
@@ -85,5 +77,30 @@ public class AdventCalendar implements CommandExecutor, Listener {
         } else {
             player.sendMessage(Main.getPrefix() + replaceColorCodes(Main.getConfigString("NotCurrentDay")));
         }
+    }
+
+    /**
+     * Replaces the color codes in a message
+     *
+     * @param message The message to replace the color codes in
+     * @return The new message
+     */
+    public String replaceColorCodes(String message) {
+        return ChatColor.translateAlternateColorCodes('&', message);
+    }
+
+    /**
+     * Builds an item by the material, amount
+     * @param material The material of the item
+     * @param displayName The name of the item
+     * @return The built item
+     */
+    public ItemStack createItem(Material material, String displayName) {
+        ItemStack i = new ItemStack(material);
+        ItemMeta m = i.getItemMeta();
+        m.setDisplayName(displayName);
+        i.setItemMeta(m);
+
+        return i;
     }
 }
