@@ -76,8 +76,11 @@ public class AdventCalendar implements CommandExecutor, Listener {
             player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
             Main.setUsed(player.getUniqueId(), day);
         } else {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(new Date());
+
             player.sendMessage(Main.getPrefix() + replaceColorCodes(Main.getConfigString("NotCurrentDay")
-                    .replace("%day%", "" + day)));
+                    .replace("%day%", "" + cal.get(Calendar.DAY_OF_MONTH))));
         }
     }
 
