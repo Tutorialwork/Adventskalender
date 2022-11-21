@@ -2,6 +2,7 @@ package de.tutorialwork.main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,6 +18,7 @@ public class Main extends JavaPlugin {
     private static final YamlConfiguration dataConfig = YamlConfiguration.loadConfiguration(dataFile);
 
     private static final File configFile = new File("plugins//Adventskalender//config.yml");
+    private static FileConfiguration config;
 
     private static String prefix;
 
@@ -44,6 +46,9 @@ public class Main extends JavaPlugin {
     public void loadConfiguration() throws IOException {
         if (!configFile.exists())
             saveDefaultConfig();
+
+        config = getConfig();
+
         if (!dataFile.exists())
             dataFile.createNewFile();
     }
@@ -54,6 +59,15 @@ public class Main extends JavaPlugin {
      */
     public static String getPrefix() {
         return prefix;
+    }
+
+    /**
+     * Gets a string from the config
+     * @param path The path of the config string to look for
+     * @return The value of the config string
+     */
+    public static String getConfigString(String path) {
+        return config.getString(path);
     }
 
     /**
