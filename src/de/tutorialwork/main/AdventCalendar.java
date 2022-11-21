@@ -66,8 +66,8 @@ public class AdventCalendar implements CommandExecutor, Listener {
                 return;
             }
 
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
-                    Main.getConfigString("Reward." + day).replace("%player%", player.getName()));
+            for (String rewardCommand : Main.getRewardCommands(day))
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), rewardCommand.replace("%player%", player.getName()));
 
             player.sendMessage(Main.getPrefix() + replaceColorCodes(Main.getConfigString("RewardMSG")
                     .replace("%day%", "" + day)));
