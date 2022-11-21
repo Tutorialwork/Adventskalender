@@ -22,8 +22,8 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getCommand("adventskalender").setExecutor(new adventskalender());
-        Bukkit.getPluginManager().registerEvents(new adventskalender(), this);
+        getCommand("adventskalender").setExecutor(new AdventCalendar());
+        Bukkit.getPluginManager().registerEvents(new AdventCalendar(), this);
         File folder = new File("plugins//Adventskalender");
         if(!folder.exists()){
             folder.mkdir();
