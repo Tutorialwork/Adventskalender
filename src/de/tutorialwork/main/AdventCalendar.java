@@ -91,7 +91,8 @@ public class AdventCalendar implements CommandExecutor, Listener {
 
     /**
      * Builds an item by the material, amount
-     * @param material The material of the item
+     *
+     * @param material    The material of the item
      * @param displayName The name of the item
      * @return The built item
      */
