@@ -86,14 +86,8 @@ public class Main extends JavaPlugin {
      * @return <b>true</b> if the day has been used, <b>false</b> otherwise
      */
     public static boolean hasUsed(UUID uuid, int day) {
-        if (dataConfig.getString(uuid + ".day" + day) != null) {
-            if (dataConfig.getBoolean(uuid + ".day" + day) == true) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+        if (dataConfig.getString(uuid + ".day" + day) == null) return false;
+
+        return dataConfig.getBoolean(uuid + ".day" + day);
     }
 }
